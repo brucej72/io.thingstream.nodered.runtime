@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" activate="activate" deactivate="deactivate" enabled="true" immediate="true" name="NodeRedRuntime">
+   <property name="osgi.command.scope" type="String" value="red"/>
+   <property name="osgi.command.function" type="String">nodes
+install
+lock
+   </property>
+   <service>
+      <provide interface="io.thingstream.nodered.service.NodeRedService"/>
+   </service>
+   <reference bind="bindLogger" cardinality="1..1" interface="org.osgi.service.log.LogService" name="Logger" policy="static" unbind="unbindLogger"/>
+   <implementation class="io.thingstream.nodered.runtime.NodeRedRuntime"/>
+</scr:component>
